@@ -1,0 +1,7 @@
+Best selling game from the file is Diablo III.
+Sum of copies sold: 187.16
+Average number of copies sold: 7.798333333333333
+Longest title rom the file has 52 characters
+Average release date is 2003.
+Game properties of a given game: ['Minecraft', 23.0, 2009, 'Survival game', 'Microsoft']
+Games grouped by genre: {'Survival game': 1, 'RPG': 5, 'Action-adventure': 1, 'First-person shooter': 6, 'Simulation': 3, 'Real-time strategy': 7, 'Sandbox': 1}Games sorted by release year: ['Diablo III', 'Terraria', 'StarCraft II: Wings of Liberty', 'Minecraft', 'The Sims 3', 'Crysis', "Garry's Mod", 'Guild Wars', 'Counter-Strike: Condition Zero', 'Doom 3', 'Half-Life 2', 'The Sims 2', 'Warhammer 40,000: Dawn of War (including expansions)', 'World of Warcraft', 'Warcraft III: Reign of Chaos', 'Diablo II', 'The Sims', 'Counter-Strike', 'EverQuest', 'Half-Life', 'StarCraft', 'Age of Empires', 'Command & Conquer', 'Populous']
