@@ -98,7 +98,7 @@ def count_grouped_by_genre(file_name):
             genres[game[genre_index]] += 1
         else:
             genres[game[genre_index]] = 1
-    return "Games grouped by genre: {0}".format(genres)
+    return "Games grouped by genre: {0}\n".format(genres)
 
 
 def get_date_ordered(file_name):
@@ -122,7 +122,52 @@ def get_date_ordered(file_name):
         arr[counter].sort()
         counter += 1
     arr = [item for sublist in arr for item in sublist]
-    return "Games sorted by release year: {0}".format(arr)
+    return "Games sorted by release year: {0}\n".format(arr)
+
+
+def quick_sort(lst):
+    """Sorting algorithm"""
+    if not lst:
+        return []
+    return (quick_sort([x for x in lst[1:] if x < lst[0]])
+            + [lst[0]] +
+            quick_sort([x for x in lst[1:] if x >= lst[0]]))
+
+
+def sort_abc(file_name):
+    """Sort, print and return title list"""
+    content = open_file(file_name)
+    title_index = 0
+    arr = [game[title_index] for game in content]
+    arr = quick_sort(arr)
+    return "Sorted title list: {0}\n".format(arr)
+
+
+def get_genres(file_name):
+    """Return and print sorted genre list without duplicates"""
+    content = open_file(file_name)
+    genre_index = 3
+    genres = list(set([game[genre_index] for game in content]))
+    genres = quick_sort(genres)
+    return "Genre list: {0}\n".format(genres)
+
+
+def when_was_top_sold_fps(file_name):
+    """Return nad print year of a top selling fps game"""
+    content = open_file(file_name)
+    copies_sold_index = 1
+    year_index = 2
+    genre_index = 3
+    best_selling_fps = []
+    for game in content:
+        if game[genre_index] == "First-person shooter":
+            if len(best_selling_fps) == 0:
+                best_selling_fps = [float(game[copies_sold_index]), game[year_index]]
+            elif best_selling_fps[0] < float(game[copies_sold_index]):
+                best_selling_fps = [float(game[copies_sold_index]), game[year_index]]
+    if len(best_selling_fps) == 0:
+        raise ValueError("No fps game in the file")
+    return "Release date of best selling fps: {0}\n".format(int(best_selling_fps[1]))
 
 
 def export_answers(file_name):
@@ -134,7 +179,10 @@ def export_answers(file_name):
                  get_date_avg(file_name),
                  get_game(file_name, title),
                  count_grouped_by_genre(file_name),
-                 get_date_ordered(file_name)]
+                 get_date_ordered(file_name),
+                 sort_abc(file_name),
+                 get_genres(file_name),
+                 when_was_top_sold_fps(file_name)]
     answers = ""
     for answer in functions:
         answers += answer
